@@ -1,0 +1,108 @@
+export type MoodType = "vibe" | "chaos" | "romantic" | "sad" | "hype";
+
+export type TabType = "chats" | "status" | "calls" | "communities" | "profile";
+
+export interface ThemePreset {
+  id: string;
+  name: string;
+  background: string;
+  backgroundSecondary: string;
+  surface: string;
+  text: string;
+  textMuted: string;
+  border: string;
+  accent: string;
+  bubbleOut: string;
+  bubbleIn: string;
+  keyboardBackground: string;
+  emojiGlow: string;
+  isDark: boolean;
+}
+
+export interface Message {
+  id: string;
+  text?: string;
+  emojis?: string;
+  isOutgoing: boolean;
+  timestamp: string;
+  isEmojiOnly: boolean;
+  reactions: { [emoji: string]: number };
+  voiceDuration?: string;
+  voiceEmotion?: string;
+  isVoice?: boolean;
+}
+
+export interface MoodData {
+  name: MoodType;
+  color: string;
+  emojis: string[];
+  vocabulary: string[];
+}
+
+export interface FloatingParticle {
+  id: string;
+  emoji: string;
+  x: number;
+  y: number;
+}
+
+export interface WallpaperState {
+  category: string;
+  url: string;
+  isAnimated: boolean;
+  reactiveEnabled: boolean;
+  blur: number; // 0px to 10px
+  brightness: number; // 0.5 to 1.5
+  name: string;
+}
+
+export interface UserProfile {
+  name: string;
+  moodBio: string;
+  vibeStatus: string;
+  avatarCombo: string; // e.g. "🔥✨"
+  animatedAvatar: boolean;
+  auraGlow: boolean;
+  favoriteEmojis: string[];
+  nowPlaying: {
+    song: string;
+    artist: string;
+  };
+  streak: number;
+  auraLevel: number;
+  badges: string[];
+  autoSyncMood: boolean;
+}
+
+export interface StatusUpdate {
+  id: string;
+  displayName: string;
+  avatarCombo: string;
+  timestamp: string;
+  content: string;
+  color: string;
+  font: string;
+  hasSeen: boolean;
+  reactions: { [emoji: string]: number };
+  songName?: string;
+}
+
+export interface CallRecord {
+  id: string;
+  displayName: string;
+  avatarCombo: string;
+  timestamp: string;
+  type: "voice" | "video";
+  status: "incoming" | "outgoing" | "missed";
+  emotionLabel?: string;
+}
+
+export interface MoodRoom {
+  id: string;
+  name: string;
+  avatarEmoji: string;
+  memberCount: number;
+  badge: string;
+  votersCount: number;
+  votedCombo?: string;
+}
